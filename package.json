@@ -1,7 +1,7 @@
 {
   "name": "mywebapp",
   "version": "0.0.1",
-  "author": "Chu Shao",
+  "author": "CBLUM",
   "scripts": {
     "start": "node app.js"
   },
@@ -13,6 +13,8 @@
     "passport": "*",
     "passport-facebook": "*",
     "passport-twitter": "*",
+    "superagent": "0.14.6",
+    "consolidate": "0.9.1",
     "dotenv": "*",
     "instagram-node-lib": "*"
   },

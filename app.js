@@ -26,6 +26,22 @@ app.get('/hashtag', function (req, res) {
 app.post('/hashtag', hashtag.getHashtag);
 app.post('/save', hashtag.saveFavorites);
 app.post('/delete', index.deleteImage);
+
+//load	environment	variables	
+var dotenv	=	require('dotenv');	
+dotenv.load();
+
+//add	instagram api	setup	
+var ig	=	require('instagram-node-lib');	
+ig.set('client_id',	process.env.instagram_client_id);	
+ig.set('client_secret',	process.env.instagram_client_secret);
+ig.tags.info({	
+name:	'sushi',	
+complete:	function(data)	{	
+	 	console.log(data);	
+}	
+});	
+
 //set environment ports and start application
 app.set('port', process.env.PORT || 3000);
 http.createServer(app).listen(app.get('port'), function(){

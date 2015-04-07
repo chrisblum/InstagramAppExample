@@ -9,7 +9,7 @@ var hashtag = require('./routes/hashtag');
 var index = require('./routes/index');
 //database setup
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOHQ_URL || 'mongodb://localhost/instagramexample');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/instagramexample');
 
 //Configures the Template engine
 app.engine('handlebars', handlebars());
@@ -27,20 +27,6 @@ app.post('/hashtag', hashtag.getHashtag);
 app.post('/save', hashtag.saveFavorites);
 app.post('/delete', index.deleteImage);
 
-//load	environment	variables	
-var dotenv	=	require('dotenv');	
-dotenv.load();
-
-//add	instagram api	setup	
-var ig	=	require('instagram-node-lib');	
-ig.set('client_id',	process.env.instagram_client_id);	
-ig.set('client_secret',	process.env.instagram_client_secret);
-ig.tags.info({	
-name:	'sushi',	
-complete:	function(data)	{	
-	 	console.log(data);	
-}	
-});	
 
 //set environment ports and start application
 app.set('port', process.env.PORT || 3000);
